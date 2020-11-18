@@ -1,5 +1,7 @@
  class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        Cinema cinema = new Cinema();
+        cinema.fillingPlaces();
+        cinema.showPlaces();
     }
 }

@@ -11,14 +11,31 @@ public class Cinema {
         this.places = new char[row][column];
     }
 
+    public int getCostOneTicket(int allRow, int allColumn, int coordinateRow) {
+        int costOneTicket;
+        int allPlace = allRow * allColumn;
+        if (allPlace < 60 || coordinateRow <= allRow / 2) {
+            costOneTicket = 10;
+        } else {
+            costOneTicket = 8;
+        }
+        return costOneTicket;
+    }
+
    public void changeStatusPlace() {
         System.out.println();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a row number:");
         int row = scanner.nextInt();
         System.out.println("Enter a seat number in that row:");
-        int column = scanner.nextInt();
-        places[row][column] = 'B';
+        int seats = scanner.nextInt();
+        places[row][seats] = 'B';
+        System.out.println();
+        System.out.println("Ticket price: $" + getCostOneTicket(this.row - 1, this.column - 1,row));
+        System.out.println();
+        /* comment
+           this.row - 1 and this.column - 1, because array stored header row and column;
+         */
    }
 
 

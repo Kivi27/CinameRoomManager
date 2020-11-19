@@ -1,7 +1,13 @@
 public class Cinema {
-    final int row = 8;
-    final int column = 9;
-    char[][] places  = new char[row][column];
+    private int row;
+    private int column;
+    private char[][] places;
+
+    public Cinema(int row, int column) {
+        this.row = row;
+        this.column = column;
+        this.places = new char[row][column];
+    }
 
     public void fillingPlaces() {
         for (int j = 0; j < column; j++) {

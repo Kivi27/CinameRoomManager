@@ -1,3 +1,5 @@
+import  java.util.Scanner;
+
 public class Cinema {
     private int row;
     private int column;
@@ -8,6 +10,17 @@ public class Cinema {
         this.column = column;
         this.places = new char[row][column];
     }
+
+   public void changeStatusPlace() {
+        System.out.println();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a row number:");
+        int row = scanner.nextInt();
+        System.out.println("Enter a seat number in that row:");
+        int column = scanner.nextInt();
+        places[row][column] = 'B';
+   }
+
 
     public void fillingPlaces() {
         for (int j = 0; j < column; j++) {
@@ -36,4 +49,5 @@ public class Cinema {
             System.out.println();
         }
     }
+
 }

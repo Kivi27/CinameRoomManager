@@ -7,10 +7,11 @@ import java.util.Scanner;
         int rows = scanner.nextInt();
         System.out.println("Enter the number of seats in each row:");
         int seatsInRow = scanner.nextInt();
+        System.out.println();
         Cinema cinema = new Cinema(rows + 1,seatsInRow + 1); //because array start is 0
         cinema.fillingPlaces();
-        cinema.showPlaces();
-        cinema.changeStatusPlace();
-        cinema.showPlaces();
+        while (true) {
+            cinema.chooseAction();
+        }
     }
 }

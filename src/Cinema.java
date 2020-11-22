@@ -67,4 +67,24 @@ public class Cinema {
         }
     }
 
+    public void chooseAction() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. Show the seats\n2. Buy a ticket\n0. exit");
+        int choose = scanner.nextInt();
+        switch (choose) {
+            case 1:
+                showPlaces();
+                break;
+            case 2:
+                changeStatusPlace();
+                break;
+            case 0:
+                System.exit(0);
+                break;
+            default:
+                System.out.println("You choose don't correct point of menu");
+        }
+        System.out.println();
+    }
+
 }

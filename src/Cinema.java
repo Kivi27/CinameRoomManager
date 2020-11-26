@@ -35,6 +35,9 @@ public class Cinema {
         return places[coordinateRow][coordinateColumn] == 'S';
     }
 
+    private boolean checkArrayIndexOutOfBoundsException(int coordinateRow, int coordinateColumn) {
+        return ((coordinateRow < 0 || coordinateRow > row - 1) || (coordinateColumn < 0 || coordinateColumn > column - 1));
+    }
 
     private void changeStatusPlace() {
         System.out.println();
@@ -43,6 +46,11 @@ public class Cinema {
         int row = scanner.nextInt();
         System.out.println("Enter a seat number in that row:");
         int seats = scanner.nextInt();
+        if (checkArrayIndexOutOfBoundsException(row,seats)) {
+            System.out.println("Wrong input!");
+            changeStatusPlace(); /* use recursion for repeat method */
+            return ;
+        }
         if (checkPlace(row,seats)) {
             places[row][seats] = 'B';
         } else {
@@ -112,7 +120,6 @@ public class Cinema {
         int allRow = row - 1 ;
         int seatsInRow = column - 1;
         int allSeats = allRow * seatsInRow;
-        System.out.println(allSeats + "bled");
         if (allSeats < 60) {
             return 10 * allSeats;
         } else {

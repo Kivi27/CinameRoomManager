@@ -1,9 +1,10 @@
 import  java.util.Scanner;
 
 public class Cinema {
-    private int row;
-    private int column;
-    private char[][] places;
+    private int row; /* count row */
+    private int column; /* count places in one row */
+    private int currentIncome;
+    private char[][] places; /* cinema seats as matrix */
 
     /* constructor class */
     public Cinema(int row, int column) {
@@ -11,6 +12,11 @@ public class Cinema {
         this.column = column;
         this.places = new char[row][column];
     }
+
+    public int getCurrentIncome() {
+        return currentIncome;
+    }
+
     /* get cost one ticket depends row */
     public int getCostOneTicket(int allRow, int allColumn, int coordinateRow) {
         int costOneTicket;
@@ -20,6 +26,7 @@ public class Cinema {
         } else {
             costOneTicket = 8;
         }
+        currentIncome += costOneTicket; /* bad code for optimize, currentIncome - global variable */
         return costOneTicket;
     }
 
@@ -91,7 +98,7 @@ public class Cinema {
     public void showStatistics() {
         System.out.println("Number of purchased tickets: " + getNumberOfPurchasedTicket());
         System.out.printf("Percentage: %.2f%n",getPercentageNumberOfPurchased());
-        System.out.println("Current income: $0");
+        System.out.println("Current income: $" + getCurrentIncome());
         System.out.println("Total income: $360");
     }
 

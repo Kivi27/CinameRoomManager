@@ -5,12 +5,13 @@ public class Cinema {
     private int column;
     private char[][] places;
 
+    /* constructor class */
     public Cinema(int row, int column) {
         this.row = row;
         this.column = column;
         this.places = new char[row][column];
     }
-
+    /* get cost one ticket depends row */
     public int getCostOneTicket(int allRow, int allColumn, int coordinateRow) {
         int costOneTicket;
         int allPlace = allRow * allColumn;
@@ -38,7 +39,7 @@ public class Cinema {
          */
    }
 
-
+    /* init matrix places */
     public void fillingPlaces() {
         for (int j = 0; j < column; j++) {
             places[0][j] = Character.forDigit(j,10);
@@ -52,7 +53,7 @@ public class Cinema {
             }
         }
     }
-
+    /* show all matrix */
     public void showPlaces() {
         System.out.println("Cinema: ");
         for (int i = 0; i < row; i++) {
@@ -67,6 +68,18 @@ public class Cinema {
         }
     }
 
+    public int getNumberOfPurchased() {
+        int countPurchasedTickets = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                if (places[i][j] == 'B') {
+                    countPurchasedTickets++;
+                }
+            }
+        }
+        return  countPurchasedTickets;
+    }
+    
     public void chooseAction() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("1. Show the seats\n2. Buy a ticket\n0. exit");

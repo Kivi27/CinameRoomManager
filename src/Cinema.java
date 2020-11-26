@@ -68,7 +68,7 @@ public class Cinema {
         }
     }
 
-    public int getNumberOfPurchased() {
+    public int getNumberOfPurchasedTicket() {
         int countPurchasedTickets = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -80,9 +80,17 @@ public class Cinema {
         return  countPurchasedTickets;
     }
 
+    public float getPercentageNumberOfPurchased() {
+        int allRow = row - 1; /* because one row and one column stores header */
+        int allColumn = column - 1;
+        int countPurchasedTicket = getNumberOfPurchasedTicket();
+        int allNumberTicket = allRow  * allColumn;
+        return  (float) countPurchasedTicket * 100 / allNumberTicket; /* math formula */
+    }
+
     public void showStatistics() {
-        System.out.println("Number of purchased tickets: " + getNumberOfPurchased());
-        System.out.println("Percentage: 0.00%");
+        System.out.println("Number of purchased tickets: " + getNumberOfPurchasedTicket());
+        System.out.printf("Percentage: %.2f%n",getPercentageNumberOfPurchased());
         System.out.println("Current income: $0");
         System.out.println("Total income: $360");
     }

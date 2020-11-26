@@ -1,10 +1,10 @@
 import  java.util.Scanner;
 
 public class Cinema {
-    private int row; /* count row */
-    private int column; /* count places in one row */
+    private final int row; /* count row */
+    private final int column; /* count places in one row */
     private int currentIncome;
-    private char[][] places; /* cinema seats as matrix */
+    private final char[][] places; /* cinema seats as matrix */
 
     /* constructor class */
     public Cinema(int row, int column) {

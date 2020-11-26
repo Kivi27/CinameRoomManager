@@ -60,6 +60,7 @@ public class Cinema {
             }
         }
     }
+
     /* show all matrix */
     public void showPlaces() {
         System.out.println("Cinema: ");
@@ -95,11 +96,23 @@ public class Cinema {
         return  (float) countPurchasedTicket * 100 / allNumberTicket; /* math formula */
     }
 
+    public int getTotalIncome() {
+        int allRow = row - 1 ;
+        int seatsInRow = column - 1;
+        int allSeats = allRow * seatsInRow;
+        System.out.println(allSeats + "bled");
+        if (allSeats < 60) {
+            return 10 * allSeats;
+        } else {
+            return 10 * (allRow / 2 * seatsInRow) + 8 * (allRow - allRow / 2 * seatsInRow);
+        }
+    }
+
     public void showStatistics() {
         System.out.println("Number of purchased tickets: " + getNumberOfPurchasedTicket());
         System.out.printf("Percentage: %.2f%n",getPercentageNumberOfPurchased());
         System.out.println("Current income: $" + getCurrentIncome());
-        System.out.println("Total income: $360");
+        System.out.println("Total income: $"+getTotalIncome());
     }
 
     public void chooseAction() {

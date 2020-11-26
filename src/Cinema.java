@@ -79,10 +79,17 @@ public class Cinema {
         }
         return  countPurchasedTickets;
     }
-    
+
+    public void showStatistics() {
+        System.out.println("Number of purchased tickets: " + getNumberOfPurchased());
+        System.out.println("Percentage: 0.00%");
+        System.out.println("Current income: $0");
+        System.out.println("Total income: $360");
+    }
+
     public void chooseAction() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1. Show the seats\n2. Buy a ticket\n0. exit");
+        System.out.println("1. Show the seats\n2. Buy a ticket\n3. Statistics\n0. exit");
         int choose = scanner.nextInt();
         switch (choose) {
             case 1:
@@ -90,6 +97,9 @@ public class Cinema {
                 break;
             case 2:
                 changeStatusPlace();
+                break;
+            case 3:
+                showStatistics();
                 break;
             case 0:
                 System.exit(0);

@@ -30,6 +30,12 @@ public class Cinema {
         return costOneTicket;
     }
 
+    /* if place not buy return true, else false */
+    private boolean checkPlace(int coordinateRow, int coordinateColumn) {
+        return places[coordinateRow][coordinateColumn] == 'S';
+    }
+
+
     private void changeStatusPlace() {
         System.out.println();
         Scanner scanner = new Scanner(System.in);
@@ -37,7 +43,13 @@ public class Cinema {
         int row = scanner.nextInt();
         System.out.println("Enter a seat number in that row:");
         int seats = scanner.nextInt();
-        places[row][seats] = 'B';
+        if (checkPlace(row,seats)) {
+            places[row][seats] = 'B';
+        } else {
+            System.out.println("That ticket has already been purchased!");
+            changeStatusPlace(); /* use recursion for repeat method */
+            return ;
+        }
         System.out.println();
         System.out.println("Ticket price: $" + getCostOneTicket(this.row - 1, this.column - 1,row));
         System.out.println();

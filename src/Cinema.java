@@ -13,12 +13,12 @@ public class Cinema {
         this.places = new char[row][column];
     }
 
-    public int getCurrentIncome() {
+    private int getCurrentIncome() {
         return currentIncome;
     }
 
     /* get cost one ticket depends row */
-    public int getCostOneTicket(int allRow, int allColumn, int coordinateRow) {
+    private int getCostOneTicket(int allRow, int allColumn, int coordinateRow) {
         int costOneTicket;
         int allPlace = allRow * allColumn;
         if (allPlace < 60 || coordinateRow <= allRow / 2) {
@@ -30,7 +30,7 @@ public class Cinema {
         return costOneTicket;
     }
 
-   public void changeStatusPlace() {
+    private void changeStatusPlace() {
         System.out.println();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter a row number:");
@@ -62,7 +62,7 @@ public class Cinema {
     }
 
     /* show all matrix */
-    public void showPlaces() {
+    private void showPlaces() {
         System.out.println("Cinema: ");
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -76,7 +76,7 @@ public class Cinema {
         }
     }
 
-    public int getNumberOfPurchasedTicket() {
+    private int getNumberOfPurchasedTicket() {
         int countPurchasedTickets = 0;
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < column; j++) {
@@ -88,7 +88,7 @@ public class Cinema {
         return  countPurchasedTickets;
     }
 
-    public float getPercentageNumberOfPurchased() {
+    private float getPercentageNumberOfPurchased() {
         int allRow = row - 1; /* because one row and one column stores header */
         int allColumn = column - 1;
         int countPurchasedTicket = getNumberOfPurchasedTicket();
@@ -96,7 +96,7 @@ public class Cinema {
         return  (float) countPurchasedTicket * 100 / allNumberTicket; /* math formula */
     }
 
-    public int getTotalIncome() {
+    private int getTotalIncome() {
         int allRow = row - 1 ;
         int seatsInRow = column - 1;
         int allSeats = allRow * seatsInRow;
@@ -108,11 +108,11 @@ public class Cinema {
         }
     }
 
-    public void showStatistics() {
+    private void showStatistics() {
         System.out.println("Number of purchased tickets: " + getNumberOfPurchasedTicket());
         System.out.printf("Percentage: %.2f%n",getPercentageNumberOfPurchased());
         System.out.println("Current income: $" + getCurrentIncome());
-        System.out.println("Total income: $"+getTotalIncome());
+        System.out.println("Total income: $" + getTotalIncome());
     }
 
     public void chooseAction() {

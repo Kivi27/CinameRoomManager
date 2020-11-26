@@ -129,7 +129,8 @@ public class Cinema {
 
     private void showStatistics() {
         System.out.println("Number of purchased tickets: " + getNumberOfPurchasedTicket());
-        System.out.printf("Percentage: %.2f%n",getPercentageNumberOfPurchased());
+        System.out.printf("Percentage: %.2f",getPercentageNumberOfPurchased());
+        System.out.println("%"); /* because in format string not correct use symbol % */
         System.out.println("Current income: $" + getCurrentIncome());
         System.out.println("Total income: $" + getTotalIncome());
     }

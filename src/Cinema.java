@@ -1,6 +1,16 @@
 import  java.util.Scanner;
 
 public class Cinema {
+
+    private final int lowCostTicket = 8;
+    private final int highCostTicket = 10;
+    private final int numberOfExpensivePlace = 60;
+    /*
+    if cinema is small, all place is expensive, else cinema have
+    expensive and non-expensive place.
+    if places more than numberOfExpensivePlace, the first rows are expensive, the rest are cheaper.
+    */
+
     private final int row; /* count row */
     private final int column; /* count places in one row */
     private int currentIncome;
@@ -21,10 +31,10 @@ public class Cinema {
     private int getCostOneTicket(int allRow, int allColumn, int coordinateRow) {
         int costOneTicket;
         int allPlace = allRow * allColumn;
-        if (allPlace < 60 || coordinateRow <= allRow / 2) {
-            costOneTicket = 10;
+        if (allPlace < numberOfExpensivePlace || coordinateRow <= allRow / 2) {
+            costOneTicket = highCostTicket;
         } else {
-            costOneTicket = 8;
+            costOneTicket = lowCostTicket;
         }
         currentIncome += costOneTicket; /* bad code for optimize, currentIncome - global variable */
         return costOneTicket;
@@ -120,10 +130,10 @@ public class Cinema {
         int allRow = row - 1 ;
         int seatsInRow = column - 1;
         int allSeats = allRow * seatsInRow;
-        if (allSeats < 60) {
-            return 10 * allSeats;
+        if (allSeats < numberOfExpensivePlace) {
+            return highCostTicket * allSeats;
         } else {
-            return 10 * (allRow / 2 * seatsInRow) + 8 * (allRow - allRow / 2 * seatsInRow);
+            return highCostTicket * (allRow / 2 * seatsInRow) + lowCostTicket * (allRow - (allRow / 2)) * seatsInRow;
         }
     }
 
